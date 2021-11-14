@@ -1,0 +1,21 @@
+.section-heading {
+  padding-left: rem(40);
+  font-size: rem(22);
+  font-weight: bold;
+  position: relative;
+  &::before {
+    content: '';
+    width: rem(40);
+    height: rem(40);
+    background-image: url(../img/pencil.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @include mq("sp") {
+    font-size: rem(18);
+  }
+}

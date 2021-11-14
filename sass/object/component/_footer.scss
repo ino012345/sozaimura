@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  background-color: #fff;
+  margin-top: rem(60);
+  &__inner {
+    max-width: rem(1110);
+    width: 100%;
+    padding: rem(10) rem(15);
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include mq("sp") {
+      flex-direction: column;
+    }
+  }
+  &__navList {
+    display: flex;
+  }
+  &__navItem {
+    margin-right: rem(25);
+    font-size: rem(14);
+    font-weight: bold;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__copyright {
+    font-size: rem(10);
+    @include mq("sp") {
+      margin-top: rem(15);
+    }
+  }
+}

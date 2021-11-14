@@ -1,0 +1,51 @@
+.section-contact {
+  max-width: rem(550);
+  width: 100%;
+  min-height: 100vh;
+  margin-right: auto;
+  margin-left: auto;
+  padding: rem(60) rem(15);
+  &__list {
+    margin-top: rem(40);
+  }
+  &__item {
+    margin-top: rem(20);
+  }
+  &__label {
+    font-size: rem(16);
+    font-weight: bold;
+  }
+  &__input {
+    width: 100%;
+    input {
+      width: 100%;
+      background-color: #fff;
+      border: none;
+      border-radius: rem(10);
+    }
+  }
+  &__textarea {
+    width: 100%;
+    textarea {
+      width: 100%;
+      background-color: #fff;
+      border: none;
+      border-radius: rem(10);
+    }
+  }
+  &__submitWrap {
+    margin-top: rem(60);
+    input {
+      display: block;
+      width: rem(200);
+      border: none;
+      border-radius: rem(30);
+      background-color: #FFE7C0;
+      font-size: rem(16);
+      font-weight: bold;
+      margin-right: auto;
+      margin-left: auto;
+      transition: all .3s;
+    }
+  }
+}

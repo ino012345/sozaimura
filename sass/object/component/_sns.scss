@@ -1,0 +1,39 @@
+.sns {
+  max-width: rem(1110);
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: rem(60) rem(15);
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: rem(40);
+    margin-bottom: rem(-10);
+    @include mq("sp") {
+      margin-top: rem(20);
+      flex-direction: column;
+    }
+  }
+  &__item {
+    width: rem(405);
+    margin-right: rem(40);
+    &:last-child {
+      margin-right: 0;
+    }
+    @include mq("sp") {
+      width: rem(315);
+      margin-right: 0;
+      margin-bottom: rem(10);
+    }
+  }
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
