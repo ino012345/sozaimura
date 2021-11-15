@@ -23,6 +23,9 @@
   endif;
   ?>
   </div>
+  <div class="illust__btnWrap">
+    <a href="<?php echo home_url('/'); ?>" class="btn">ホームに戻る</a>
+  </div>
 </section>
 
 <?php get_footer(); ?>

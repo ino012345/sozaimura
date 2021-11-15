@@ -905,6 +905,41 @@ summary {
 	text-align: center;
 }
 
+.illust__article {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2.5rem;
+	max-width: 37.5rem;
+}
+
+.illust__articleImage {
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	width: 18.75rem;
+}
+
+.illust__articleImage img {
+	height: 100%;
+	width: 100%;
+}
+
+.illust__articleText {
+	font-size: 1rem;
+	font-weight: bold;
+	margin-top: 1.5625rem;
+}
+
+.illust__category {
+	font-size: 1rem;
+	margin-left: -0.9375rem;
+	margin-top: 2.5rem;
+}
+
+.illust__category span {
+	margin-left: 0.9375rem;
+}
+
 .section-profile {
 	margin-left: auto;
 	margin-right: auto;

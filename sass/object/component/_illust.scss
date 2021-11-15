@@ -60,4 +60,33 @@
     text-align: center;
     margin-top: rem(60);
   }
+  &__article {
+    max-width: rem(600);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: rem(40);
+  }
+  &__articleImage {
+    width: rem(300);
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__articleText {
+    font-size: rem(16);
+    font-weight: bold;
+    margin-top: rem(25);
+  }
+  &__category {
+    margin-top: rem(40);
+    font-size: rem(16);
+    margin-left: rem(-15);
+    span {
+      margin-left: rem(15);
+    }
+  }
 }
