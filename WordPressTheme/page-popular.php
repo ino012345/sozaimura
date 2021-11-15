@@ -1,12 +1,14 @@
 <?php get_header(); ?>
 
-<section class="illust" style="min-height: 100vh;">
-  <h1 class="section-heading">「<?php the_search_query(); ?>」の検索結果</h1>
+<section class="illust">
+  <h1 class="section-heading">人気のイラスト一覧</h1>
   <div class="illust__list">
   <?php
-  if (have_posts() && get_search_query()) : 
-    while (have_posts()) :
-      the_post();
+    $query = new WP_Query( c_get_wpp_args( 'post', 'month', 40 ) );
+
+    if ( $query->have_posts() ) :
+      while ( $query->have_posts() ) :
+          $query->the_post();
   ?>
       <a href="<?php the_permalink(); ?>" class="illust__item">
         <figure class="illust__image">
@@ -19,12 +21,9 @@
         <p class="illust__title"><?php the_title(); ?></p>
       </a>
   <?php
-    endwhile;
-    else :
-  ?>
-  <p class="illust__not">検索キーワードに該当するイラストがございませんでした。<br>カテゴリーやタグから探してみてください！</p>
-  <?php
-  endif;
+      endwhile;
+    endif;
+    wp_reset_postdata();
   ?>
   </div>
   <div class="illust__btnWrap">

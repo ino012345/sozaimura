@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
 <section class="illust" style="min-height: 100vh;">
-  <h1 class="section-heading">「<?php the_search_query(); ?>」の検索結果</h1>
+  <h1 class="section-heading"><?php single_cat_title(); ?></h1>
   <div class="illust__list">
   <?php
-  if (have_posts() && get_search_query()) : 
+  if (have_posts()) : 
     while (have_posts()) :
       the_post();
   ?>
@@ -20,15 +20,8 @@
       </a>
   <?php
     endwhile;
-    else :
-  ?>
-  <p class="illust__not">検索キーワードに該当するイラストがございませんでした。<br>カテゴリーやタグから探してみてください！</p>
-  <?php
   endif;
   ?>
-  </div>
-  <div class="illust__btnWrap">
-    <a href="<?php echo home_url('/'); ?>" class="btn">ホームに戻る</a>
   </div>
 </section>
 

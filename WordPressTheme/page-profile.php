@@ -7,19 +7,19 @@
   </figure>
   <ul class="section-profile__list">
     <li class="section-profile__item">
-      <h2>なまえ</h2>
+      <h2>名前</h2>
       <p>ちょぶらん</p>
     </li>
     <li class="section-profile__item">
-      <h2>しゅみ</h2>
+      <h2>趣味</h2>
       <p>ゲームがだいすき！生き物もすき！</p>
     </li>
     <li class="section-profile__item">
-      <h2>とくぎ</h2>
+      <h2>特技</h2>
       <p>ゆるかわイラストを描くこと</p>
     </li>
     <li class="section-profile__item">
-      <h2>ごあいさつ</h2>
+      <h2>ご挨拶</h2>
       <p>そざい村に来ていただき、ありがとうございます！<br>イラストがいっぱいの見るだけで楽しいホームページにしたいと思っています。欲しい素材がありましたら、お気軽にリクエストして下さい♪</p>
     </li>
   </ul>

@@ -3,164 +3,62 @@
 <section class="illust">
   <h1 class="section-heading">人気のイラスト</h1>
   <div class="illust__list">
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
+  <?php
+    $query = new WP_Query( c_get_wpp_args(  ) );
+
+    if ( $query->have_posts() ) :
+      while ( $query->have_posts() ) :
+          $query->the_post();
+  ?>
+      <a href="<?php the_permalink(); ?>" class="illust__item">
+        <figure class="illust__image">
+          <?php if ( has_post_thumbnail() ) : ?>
+            <?php the_post_thumbnail(); ?>
+          <?php else : ?>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
+          <?php endif; ?>
+        </figure>
+        <p class="illust__title"><?php the_title(); ?></p>
+      </a>
+  <?php
+      endwhile;
+    endif;
+    wp_reset_postdata();
+  ?>
   </div>
   <div class="illust__btnWrap">
-    <a href="#" class="btn">もっと見る</a>
+    <a href="<?php echo home_url('popular'); ?>" class="btn">もっと見る</a>
   </div>
 </section>
 <section class="illust">
   <h1 class="section-heading">最近のイラスト</h1>
   <div class="illust__list">
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
-    <a href="#" class="illust__item">
-      <figure class="illust__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
-      </figure>
-      <p class="illust__title">○○のイラスト</p>
-    </a>
+  <?php
+    $args = array(
+      'posts_per_page' => 8 // 表示件数の指定
+    );
+    $posts = get_posts( $args );
+    foreach ( $posts as $post ): // ループの開始
+    setup_postdata( $post ); // 記事データの取得
+  ?>
+      <a href="<?php the_permalink(); ?>" class="illust__item">
+        <figure class="illust__image">
+          <?php if ( has_post_thumbnail() ) : ?>
+            <?php the_post_thumbnail(); ?>
+          <?php else : ?>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dummy.png" alt="ダミー">
+          <?php endif; ?>
+        </figure>
+        <p class="illust__title"><?php the_title(); ?></p>
+      </a>
+  <?php
+    endforeach; // ループの終了
+    wp_reset_postdata(); // 直前のクエリを復元する
+  ?>
   </div>
   <div class="illust__btnWrap">
-    <a href="#" class="btn">もっと見る</a>
+    <a href="<?php echo home_url('all'); ?>" class="btn">もっと見る</a>
   </div>
-</section>
-<section class="category">
-  <h1 class="section-heading">カテゴリ</h1>
-  <ul class="category__list">
-    <li class="category__item">
-      <a href="#" class="category__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/home.png" alt="生活">
-      </a>
-    </li>
-    <li class="category__item">
-      <a href="#" class="category__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/character.png" alt="キャラ">
-      </a>
-    </li>
-    <li class="category__item">
-      <a href="#" class="category__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/work.png" alt="仕事">
-      </a>
-    </li>
-    <li class="category__item">
-      <a href="#" class="category__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/thing.png" alt="もの">
-      </a>
-    </li>
-    <li class="category__item">
-      <a href="#" class="category__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/event.png" alt="イベント">
-      </a>
-    </li>
-    <li class="category__item">
-      <a href="#" class="category__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/other.png" alt="その他">
-      </a>
-    </li>
-  </ul>
-</section>
-<section class="sns">
-  <h1 class="section-heading">SNS</h1>
-  <ul class="sns__list">
-    <li class="sns__item">
-      <a href="#" class="sns__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/twitter.png" alt="Twitter">
-      </a>
-    </li>
-    <li class="sns__item">
-      <a href="#" class="sns__image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/instagram.png" alt="Instagram">
-      </a>
-    </li>
-  </ul>
 </section>
 
 <?php get_footer(); ?>

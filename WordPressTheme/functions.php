@@ -149,3 +149,44 @@ function my_excerpt_more( $more ) {
 
 }
 add_filter( 'excerpt_more', 'my_excerpt_more' );
+
+/**
+ * Wppからwp_query用args取得.
+ * wppでもwp_queryと同じ感覚で出力できるようidを取得し、wp_queryで用いる形でargsを出力します.
+ *
+ * @param string $post_type カスタム投稿を指定。デフォルトnull.
+ * @param string $range |day|weekly|month|から集計期間を選択.
+ * @param int    $limit 取得する件数のリミットを指定.
+ * @return $wpp_id idを返す.
+ */
+function c_get_wpp_args( $post_type = 'post', $range = 'month', $limit = 8 ) {
+
+	$wpp_args = array(
+			'range'     => $range,
+			'order_by'  => 'views',
+			'post_type' => $post_type,
+			'limit'     => $limit,
+	);
+
+	$wpp_query = new WPP_Query( $wpp_args );
+	$wpp_posts = $wpp_query->get_posts();
+
+	$wpp_id = array();
+	if ( $wpp_posts ) {
+			foreach ( $wpp_posts as $value ) {
+					array_push( $wpp_id, intval( $value->id ) );
+			}
+	}
+
+	$args = array(
+			'post_type'      => $post_type,
+			'posts_per_page' => $limit,
+			'orderby'        => 'post__in',
+			'order'          => 'DESC',
+			'post_status'    => 'publish',
+			'post__in'       => $wpp_id,
+			'post__not_in'   => get_option( 'sticky_posts' ),
+	);
+
+	return $args;
+}

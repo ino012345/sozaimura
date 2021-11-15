@@ -1,12 +1,15 @@
 <?php get_header(); ?>
 
 <section class="illust" style="min-height: 100vh;">
-  <h1 class="section-heading">「<?php the_search_query(); ?>」の検索結果</h1>
+  <h1 class="section-heading">最新のイラスト一覧</h1>
   <div class="illust__list">
   <?php
-  if (have_posts() && get_search_query()) : 
-    while (have_posts()) :
-      the_post();
+    $args = array(
+      'posts_per_page' => 40 // 表示件数の指定
+    );
+    $posts = get_posts( $args );
+    foreach ( $posts as $post ): // ループの開始
+    setup_postdata( $post ); // 記事データの取得
   ?>
       <a href="<?php the_permalink(); ?>" class="illust__item">
         <figure class="illust__image">
@@ -19,12 +22,8 @@
         <p class="illust__title"><?php the_title(); ?></p>
       </a>
   <?php
-    endwhile;
-    else :
-  ?>
-  <p class="illust__not">検索キーワードに該当するイラストがございませんでした。<br>カテゴリーやタグから探してみてください！</p>
-  <?php
-  endif;
+    endforeach; // ループの終了
+    wp_reset_postdata(); // 直前のクエリを復元する
   ?>
   </div>
   <div class="illust__btnWrap">
